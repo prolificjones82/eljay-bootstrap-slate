@@ -1,39 +1,78 @@
 @charset 'UTF-8';
 
-/**
- * [replace with theme name] | Built with Slate
- */
-@import '~normalize.css/normalize';
+// /**
+//  * LGT Starter | Built with Slate
+//  */
+// @import '~normalize.css/normalize';
 
-// Settings
-@import './variables';
+// // Settings
+// @import './variables';
 
-// Tools
-@import './tools/mixins';
-@import './tools/functions';
+// // Tools
+// @import './tools/mixins';
+// @import './tools/functions';
 
-// Core
-@import './core/forms';
-@import './core/helpers';
-@import './core/layout';
-@import './core/media';
-@import './core/responsive-tables';
-@import './core/rte';
-@import './core/typography';
+// // Core
+// @import './core/forms';
+// @import './core/helpers';
+// @import './core/layout';
+// @import './core/media';
+// @import './core/responsive-tables';
+// @import './core/rte';
+// @import './core/typography';
 
-// Components
-@import './components/buttons';
-@import './components/hero-banner';
-@import './components/icons';
-@import './components/placeholders';
-@import './components/responsive-images';
+// // Components
+// @import './components/buttons';
+// @import './components/hero-banner';
+// @import './components/icons';
+// @import './components/placeholders';
+// @import './components/responsive-images';
 
-// Sections
-@import './sections/blog-posts';
-@import './sections/collection-list';
-@import './sections/featured-collection';
-@import './sections/image-with-text';
+// // Sections
+// @import './sections/blog-posts';
+// @import './sections/collection-list';
+// @import './sections/featured-collection';
+// @import './sections/image-with-text';
 
-// Templates
-@import './templates/gift_card';
-@import './templates/product';
+// // Templates
+// @import './templates/gift_card';
+// @import './templates/product';
+
+@import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+@import "./variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
