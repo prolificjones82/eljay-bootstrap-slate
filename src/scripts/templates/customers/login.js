@@ -9,51 +9,51 @@
 import $ from 'jquery';
 
 const selectors = {
-  recoverPasswordForm: '#RecoverPassword',
-  hideRecoverPasswordLink: '#HideRecoverPasswordLink',
+    recoverPasswordForm: '#RecoverPassword',
+    hideRecoverPasswordLink: '#HideRecoverPasswordLink',
 };
 
 function onShowHidePasswordForm(evt) {
-  evt.preventDefault();
-  toggleRecoverPasswordForm();
+    evt.preventDefault();
+    toggleRecoverPasswordForm();
 }
 
 function checkUrlHash() {
-  const hash = window.location.hash;
+    const hash = window.location.hash;
 
-  // Allow deep linking to recover password form
-  if (hash === '#recover') {
-    toggleRecoverPasswordForm();
-  }
+    // Allow deep linking to recover password form
+    if (hash === '#recover') {
+        toggleRecoverPasswordForm();
+    }
 }
 
 /**
  *  Show/Hide recover password form
  */
 function toggleRecoverPasswordForm() {
-  $('#RecoverPasswordForm').toggleClass('hide');
-  $('#CustomerLoginForm').toggleClass('hide');
+    $('#RecoverPasswordForm').toggleClass('hide');
+    $('#CustomerLoginForm').toggleClass('hide');
 }
 
 /**
  *  Show reset password success message
  */
 function resetPasswordSuccess() {
-  const $formState = $('.reset-password-success');
+    const $formState = $('.reset-password-success');
 
-  // check if reset password form was successfully submited.
-  if (!$formState.length) {
-    return;
-  }
+    // check if reset password form was successfully submited.
+    if (!$formState.length) {
+        return;
+    }
 
-  // show success message
-  $('#ResetSuccess').removeClass('hide');
+    // show success message
+    $('#ResetSuccess').removeClass('hide');
 }
 
 if ($(selectors.recoverPasswordForm).length) {
-  checkUrlHash();
-  resetPasswordSuccess();
+    checkUrlHash();
+    resetPasswordSuccess();
 
-  $(selectors.recoverPasswordForm).on('click', onShowHidePasswordForm);
-  $(selectors.hideRecoverPasswordLink).on('click', onShowHidePasswordForm);
+    $(selectors.recoverPasswordForm).on('click', onShowHidePasswordForm);
+    $(selectors.hideRecoverPasswordLink).on('click', onShowHidePasswordForm);
 }
