@@ -43,7 +43,8 @@
         soldOut: {{ 'products.product.sold_out' | t | json }},
         unavailable: {{ 'products.product.unavailable' | t | json }}
       },
-      moneyFormat: {{ shop.money_format | json }}
+      moneyFormat: {{ shop.money_format | json }},
+      shopUrl: {{ shop.permanent_domain | json }}
     };
 
     {% if template.directory == 'customers' %}

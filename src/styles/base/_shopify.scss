@@ -1,0 +1,214 @@
+.hide {
+    display: none;
+}
+
+.errors {
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+.shopify-challenge {
+    &__container {
+        padding: 2rem 0;
+    }
+
+    &__message {
+        @extend .alert;
+        @extend .alert-primary;
+    }
+
+    &__button {
+        @include button-variant($primary, $primary);
+    }
+}
+
+.collection {
+    &__tag {
+        a {
+            color: $white;
+        }
+    }
+}
+
+// similar to Bootstrap's .img-fluid but these classes are coupled with Shopify's JS
+.responsive-image {
+    // &__wrapper {
+    //     position: relative;
+    //     overflow: hidden;
+    //     width: 100%;
+    //     margin: 0 auto;
+
+    //     .no-js & {
+    //         display: none;
+    //     }
+
+    //     &::before {
+    //         content: '';
+    //         position: relative;
+    //         display: block;
+    //     }
+
+    //     img {
+    //         display: block;
+    //         width: 100%;
+    //     }
+
+    //     &--full-height {
+    //         height: 100%;
+    //     }
+    // }
+
+    &__image {
+        @extend .img-fluid;
+        width: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // display: block;
+        // height: 100%;
+    }
+}
+
+.image-with-text {
+    padding: 3rem 0;
+}
+
+// Only show when JS is not supported
+.no-js:not(html) {
+    display: none;
+
+    .no-js & {
+        display: block;
+    }
+}
+
+// Only show when JS is supported
+.js {
+    .no-js & {
+        display: none;
+    }
+}
+
+// Only show when browser cookies are not supported
+.supports-no-cookies:not(html) {
+    display: none;
+
+    html.supports-no-cookies & {
+        display: block;
+    }
+}
+
+// Only show when browser cookies are supported
+.supports-cookies {
+    html.supports-no-cookies & {
+        display: none;
+    }
+}
+
+.shopify-policy__container {
+    width: 100% !important;
+    max-width: none !important;
+    padding-top: rem-calc(30) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+    @include media-breakpoint-up(lg) {
+        padding-top: rem-calc(60) !important;
+    }
+
+    .shopify-policy__title {
+        padding-bottom: rem-calc(30);
+        border-bottom: solid 1px rgba($black, 0.1);
+        margin-bottom: rem-calc(32);
+    
+        @include media-breakpoint-up(lg) {
+            padding-bottom: rem-calc(60);
+        }
+
+        & > * {
+            text-align: center;
+            margin: 0;
+            line-height: 1;
+
+            @include media-breakpoint-down(md) {
+                font-size: rem-calc(30);
+            }
+        }
+    }
+
+    .shopify-policy__body {
+        padding: rem-calc(0 ($grid-gutter-width / 2) 30);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        @extend .col-12;
+
+        @include media-breakpoint-up(sm) {
+            max-width: rem-calc(map-get($container-max-widths, sm));
+        }
+
+        @include media-breakpoint-up(md) {
+            max-width: rem-calc(map-get($container-max-widths, md));
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-width: rem-calc(map-get($container-max-widths, lg));
+        }
+
+        // @include media-breakpoint-up(xl) {
+        //     max-width: rem-calc(map-get($container-max-widths, xl));
+        // }
+    }
+
+    // margin-top: 5rem !important;
+    // margin-bottom: 5rem !important;
+    // width: 100%;
+    // max-width: map-get($map: $container-max-widths, $key: 'sm') !important;
+
+    // @include media-breakpoint-up(md) {
+    //     max-width: map-get($map: $container-max-widths, $key: 'md') !important;
+    // }
+
+    // @include media-breakpoint-up(lg) {
+    //     max-width: map-get($map: $container-max-widths, $key: 'lg') !important;
+    //     padding-left: rem-calc(15);
+    //     padding-right: rem-calc(15);
+    // }
+
+    // @include media-breakpoint-up(xl) {
+    //     max-width: map-get($map: $container-max-widths, $key: 'xl') !important;
+    // }
+
+    // .shopify-policy__title {
+    //     padding-bottom: rem-calc(20);
+
+    //     h1 {
+    //         @include media-breakpoint-up(md) {
+    //             font-size: rem-calc(50);
+    //         }
+
+    //         @include media-breakpoint-up(xl) {
+    //             font-size: rem-calc(70);
+    //         }
+    //     }
+    // }
+
+    // .shopify-policy__body {
+    //     @include media-breakpoint-up(md) {
+    //         margin-left: auto;
+    //         margin-right: auto;
+    //         max-width: rem-calc(1000);
+    //     }
+    // }
+}
+
+.shopify-challenge__container {
+    margin-top: rem-calc(50);
+    margin-bottom: rem-calc(50);
+
+    @include media-breakpoint-up(lg) {
+        margin-top: rem-calc(100);
+        margin-bottom: rem-calc(100);
+    }
+}
