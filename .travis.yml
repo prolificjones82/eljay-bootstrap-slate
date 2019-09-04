@@ -7,9 +7,6 @@ cache:
   - node_modules
 script:
 - npm run build
-- npm run lint
 notifications:
   email:
   - "mail@leejones.me.uk"
-env:
-  - EMAIL="mail@leejones.me.uk"
