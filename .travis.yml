@@ -10,4 +10,6 @@ script:
 - npm run lint
 notifications:
   email:
-    - "mail@leejones.me.uk"
+  - "mail@leejones.me.uk"
+env:
+  - EMAIL="mail@leejones.me.uk"
