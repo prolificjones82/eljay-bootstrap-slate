@@ -1,18 +1,21 @@
 {
-  "name": "starter-theme",
-  "version": "1.0.0-alpha.1",
+  "name": "shopify-slate-starter",
+  "version": "1.0.0",
   "private": true,
-  "author": "Shopify Inc.",
-  "description": "An opinionated, Slate compatible, starting point for developing Shopify themes.",
+  "author": "Lee Jones",
+  "description": "Slate starter theme with Bootstrap 4.",
   "keywords": [
+    "lgt",
+    "limegreentangerine",
+    "lee jones",
     "shopify",
     "theme"
   ],
-  "bugs": "https://github.com/Shopify/starter-theme/issues",
+  "bugs": "https://github.com/prolificjones82/shopify-slate-starter/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Shopify/starter-theme.git"
+    "url": "https://github.com/prolificjones82/shopify-slate-starter.git"
   },
   "devDependencies": {
     "@shopify/slate-tools": "1.0.0-beta.14",
@@ -27,7 +30,7 @@
     "@shopify/theme-rte": "^1.0.0-alpha.7",
     "@shopify/theme-sections": "^2.0.0",
     "@shopify/theme-variants": "^1.0.0-alpha.9",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "~4.3.1",
     "es6-promise": "^4.2.5",
     "jquery": "^3.2.1",
     "lazysizes": "^4.1.1",
@@ -43,6 +46,7 @@
     "watch": "slate-tools start --skipFirstDeploy",
     "build": "slate-tools build",
     "deploy": "slate-tools build && slate-tools deploy",
+    "deploy:production": "slate-tools build && slate-tools deploy --env=production",
     "zip": "slate-tools build && slate-tools zip",
     "lint": "slate-tools lint",
     "format": "slate-tools format"
