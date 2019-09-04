@@ -43,6 +43,29 @@
         ]
     },
     {
+        "name": "Social sharing",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "social_twitter_share",
+            "label": "Share via Twitter",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "social_facebook_share",
+            "label": "Share via Facebook",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "social_pinterest_share",
+            "label": "Share via Pinterest",
+            "default": false
+          }
+        ]
+    },
+    {
         "name": "Cart",
         "settings": [
             {

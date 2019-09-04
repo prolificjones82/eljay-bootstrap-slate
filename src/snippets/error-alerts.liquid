@@ -1,5 +1,5 @@
 {% if errors != blank %}
-    <div class="alert alert-error" role="alert">
-        
+    <div class="alert alert-danger {{ classes }}" role="alert">
+        {{ errors | default_errors }}
     </div>
 {% endif %}
