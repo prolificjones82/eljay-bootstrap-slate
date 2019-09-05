@@ -1,0 +1,28 @@
+.section {
+    &__header {
+        &--announcement-bar {
+            @extend .alert;
+            @extend .alert-secondary;
+            text-align: center;
+            margin: 0;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        &--header {
+            padding-top: rem-calc(15);
+            padding-bottom: rem-calc(15);
+            background-color: $primary;
+        }
+
+        &--logo {
+            color: $white;
+
+            &:hover {
+                color: darken($white, 20%);
+            }
+        }
+    }
+}
