@@ -6,7 +6,12 @@ body {
 }
 
 a {
-    @include transition(color 100ms ease-in-out, border-color 100ms ease-in-out);
+    @include transition(all $link-transition-speed ease-in-out);
+    border-bottom: solid 1px rgba($primary, 0);
+
+    &:hover {
+        border-bottom-color: rgba($primary, 1);
+    }
 }
 
 *,

@@ -50,6 +50,10 @@ theme.breakpoints = {
 
 $(window).on('load', () => {
     $('body').addClass('loaded');
+
+    if ($('#LoginModal').hasClass('has-errors')) {
+        $('#LoginModal').modal('show');
+    }
 });
 
 $(function() {

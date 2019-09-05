@@ -1,0 +1,17 @@
+.social-sharing {
+    a {
+        margin-left: rem-calc(5);
+        margin-right: rem-calc(5);
+        border-bottom: none !important;
+        @include svg-fill($black);        
+
+        svg {
+            width: rem-calc(25);
+            height: rem-calc(25);
+        }
+        
+        &:hover {
+            @include svg-fill($primary);
+        }
+    }
+}

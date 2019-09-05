@@ -77,12 +77,12 @@
     transition: $args;
 }
 
-@mixin svg-fill($color) {
+@mixin svg-fill($color, $args: fill $link-transition-speed ease-in-out) {
     svg {
         circle,
         path {
             fill: $color;
-            @include transition(fill 100ms ease-in-out);
+            @include transition($args);
         }
     }
 }
@@ -103,4 +103,11 @@
 
 @mixin overlay-color($colour: $black, $opacity: 0.4) {
     background-color: rgba($colour, $opacity);
+}
+
+@mixin css-linear-gradient($color1: $black, $opacity1: 0, $position1: 0%, $color2: $black, $opacity2: 1, $position2: 100%) {
+    background: -moz-linear-gradient(top,  rgba($color1, $opacity1) $position1, rgba($color2, $opacity2) $position2); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba($color1, $opacity1) $position1, rgba($color2, $opacity2) $position2); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba($color1, $opacity1) $position1, rgba($color2, $opacity2) $position2); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color1}00', endColorstr='#{$color2}',GradientType=0 ); /* IE6-9 */
 }
