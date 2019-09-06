@@ -1,0 +1,13 @@
+// Shopify Settings
+//
+// Settings specific to Shopify componets and elements
+// Lee Jones 06/09/2019
+
+//
+// ANNOUNCEMENT BAR (sections/header.liquid)
+// Inherits base styles from Bootstrap Alert
+//
+$announcement-bar-bg:                   $primary !default;
+$announcement-bar-color:                $white !default;
+$announcement-bar-border-radius:        0 !default;
+$announcement-bar-paragraph-margin:     0 !default;

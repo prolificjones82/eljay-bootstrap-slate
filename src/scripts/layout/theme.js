@@ -10,6 +10,7 @@ import '../../styles/theme.scss.liquid';
 
 import $ from 'jquery';
 import 'bootstrap/js/dist/modal';
+import 'bootstrap/js/dist/dropdown';
 import { forceFocus, bindInPageLinks } from '@shopify/theme-a11y';
 import { cookiesEnabled } from '@shopify/theme-cart';
 import Cookies from 'js-cookie';

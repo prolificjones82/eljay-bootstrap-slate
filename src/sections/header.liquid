@@ -14,7 +14,7 @@
 <section class="section__header" data-section-id="{{ section.id }}" data-section-type="header">
     {% if section.settings.announcement_bar_enabled %}
         {% if section.settings.announcement_bar_home_page_only == false or template.name == 'index' %}
-            <div class="section__header--announcement-bar" role="alert">
+            <div class="announcement-bar" role="alert">
                 {% if section.settings.announcement_bar_link != blank %}
                     <a href="{{ section.settings.announcement_bar_link }}">
                         {{ section.settings.announcement_bar_text | escape }}
@@ -29,9 +29,15 @@
     <header class="section__header--header" role="banner">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <a href="#" class="toggle-navigation">
-                    {% include 'icon-hamburger' %}
-                </a>
+                <div class="section__header--button-container">
+                    <a href="#" class="section__header--icon-button toggle-navigation order-lg-2">
+                        {% include 'icon-hamburger' %}
+                    </a>
+
+                    <a href="#" class="section__header--icon-button toggle-search order-lg-1">
+                        {% include 'icon-search' %}
+                    </a>
+                </div>
 
                 {% if template.name == 'index' %}<h1 class="h5 m-0">{% else %}<div class="h5 m-0">{% endif %}
                     <a href="/" class="section__header--logo">
@@ -44,16 +50,69 @@
                     </a>
                 {% if template.name == 'index' %}</h1>{% else %}</div>{% endif %}
 
-                <a href="/cart">
-                    {% include 'icon-cart' %}
-                    {% comment %}
-                    {{ 'layout.cart.title' | t }}
-                    ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
-                    {% endcomment %}
-                </a>
+                <div class="section__header--button-container">
+                    {% if shop.customer_accounts_enabled %}
+                        <div class="section__header--account-dropdown dropdown">
+                            <a class="dropdown-toggle" id="accountDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% include 'icon-account' %}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="accountDropdownMenu">
+                                {% if customer %}
+                                    {% if customer.first_name != blank %}
+                                        {% capture name %}<a href="/account" class="dropdown-item">{{ customer.first_name }} {{ customer.last_name }}</a>{% endcapture %}
+                                        {{ 'layout.customer.logged_in_as_html' | t: name: name }}
+                                    {% else %}
+                                        <a href="/account" class="dropdown-item">{{ 'layout.customer.account' | t }}</a>
+                                    {% endif %}
+                                    <a href="/account/logout" class="dropdown-item">{{ 'layout.customer.log_out' | t }}</a>
+                                {% else %}
+                                    <a href="/account/login" class="dropdown-item">{{ 'layout.customer.log_in' | t }}</a>
+                                    <a href="/account/register" class="dropdown-item">{{ 'layout.customer.create_account' | t }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <a href="/cart" class="section__header--icon-button">
+                        {% include 'icon-cart' %}
+                        <span class="sr-only">{{ 'layout.cart.title' | t }}</span>
+                        <span id="cart-count" class="cart-count">{{ cart.item_count }} <span class="sr-only">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
+
+    <nav class="section__header--navigation" role="navigation">
+        <a href="#" class="section__header--icon-button toggle-navigation d-lg-none">
+            {% include 'icon-close' %}
+        </a>
+
+        <ul>
+            {% for link in linklists[section.settings.menu].links %}
+                {% if link.links != blank %}
+                    <li class="section__header--navigation-dropdown">
+                        <a href="{{ link.url }}" class="section__header--navigation-dropdown-menu-toggle" id="{{ link.title | handleize }}Menu" data-toggle="section__header--navigation-dropdown-menu-list" aria-haspopup="true" aria-expanded="false">
+                            {{ link.title }}
+                        </a>
+                        <div class="section__header--navigation-dropdown-menu-list" aria-labelledby="{{ link.title | handleize }}Menu">
+                            {% for childlink in link.links %}
+                                <a href="{{ childlink.url }}" class="section__header--navigation-dropdown-menu-list-item">
+                                    {{ childlink.title }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ link.url }}">
+                            {{ link.title }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
 </section>
 
 

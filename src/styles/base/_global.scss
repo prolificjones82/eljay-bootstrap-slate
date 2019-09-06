@@ -1,4 +1,6 @@
-iframe[src="//localhost:3000/preview_bar"] { display:none; }
+@for $i from 3000 through 3010 {
+    iframe[src="//localhost:#{$i}/preview_bar"] { display:none; }
+}
 
 html,
 body {
