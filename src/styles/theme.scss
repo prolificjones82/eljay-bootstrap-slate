@@ -42,6 +42,8 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
+@import "./shopify_settings";
+
 // BASE
 @import "./base/global";
 @import "./base/shopify";
@@ -51,3 +53,13 @@
 
 // TEMPLATES
 @import "./templates/password";
+
+// SECTIONS
+@import "./sections/header";
+
+// SNIPPETS
+@import "./snippets/social-sharing";
+
+// COMPONENTS
+@import "./components/announcement-bar";
+@import "./components/navigation";
