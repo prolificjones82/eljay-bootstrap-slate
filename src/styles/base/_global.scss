@@ -6,7 +6,12 @@ body {
 }
 
 a {
+    border-bottom: solid 1px rgba($link-color, 0);
     @include transition(color 100ms ease-in-out, border-color 100ms ease-in-out);
+
+    &:hover {
+        border-bottom: solid 1px rgba($link-hover-color, 1);
+    }
 }
 
 *,
@@ -16,17 +21,6 @@ a {
 
 .visually-hidden {
     display: none;
-}
-
-.toggle-password {
-    position: fixed;
-    bottom: rem-calc(20);
-    right: rem-calc(30);
-    opacity: 0.3;
-
-    &:hover {
-        opacity: 1;
-    }
 }
 
 #Login {
