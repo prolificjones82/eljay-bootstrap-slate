@@ -52,25 +52,16 @@
 
                 <div class="section__header--button-container">
                     {% if shop.customer_accounts_enabled %}
-                        <div class="section__header--account-dropdown dropdown">
-                            <a class="dropdown-toggle" id="accountDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if customer %}
+                            <a href="/account" class="section__header--icon-button">
+                                {% capture name %}{{ customer.first_name | truncate: 1 }} {{ customer.last_name | truncate: 1 }}{% endcapture %}
+                                <span class="account-icon">{{ name }}</span>
+                            </a>
+                        {% else %}
+                            <a href="/account" class="section__header--icon-button">
                                 {% include 'icon-account' %}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="accountDropdownMenu">
-                                {% if customer %}
-                                    {% if customer.first_name != blank %}
-                                        {% capture name %}<a href="/account" class="dropdown-item">{{ customer.first_name }} {{ customer.last_name }}</a>{% endcapture %}
-                                        {{ 'layout.customer.logged_in_as_html' | t: name: name }}
-                                    {% else %}
-                                        <a href="/account" class="dropdown-item">{{ 'layout.customer.account' | t }}</a>
-                                    {% endif %}
-                                    <a href="/account/logout" class="dropdown-item">{{ 'layout.customer.log_out' | t }}</a>
-                                {% else %}
-                                    <a href="/account/login" class="dropdown-item">{{ 'layout.customer.log_in' | t }}</a>
-                                    <a href="/account/register" class="dropdown-item">{{ 'layout.customer.create_account' | t }}</a>
-                                {% endif %}
-                            </div>
-                        </div>
+                        {% endif %}
                     {% endif %}
 
                     <a href="/cart" class="section__header--icon-button">
@@ -113,7 +104,21 @@
             {% endfor %}
         </ul>
     </nav>
+    
+    <form class="hero-search" action="/search" method="get" role="search">
+        <label for="Search-{{ section.id }}" class="label-hidden">
+            {{ 'general.search.placeholder' | t }}
+        </label>
+    
+        <input type="search" name="q" id="Search-{{ section.id }}" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+    
+        <button type="submit" class="button">
+            {% include 'icon-search' %}
+            <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+    </form>
 </section>
+
 
 
 {% schema %}
