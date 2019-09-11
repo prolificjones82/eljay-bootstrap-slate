@@ -1,0 +1,96 @@
+.section {
+    &__header {
+        &--header {
+            padding-top: rem-calc(15);
+            padding-bottom: rem-calc(15);
+            background-color: $white;
+        }
+
+        &--button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        &--account-dropdown {
+            position: relative;
+            display: block;
+            width: rem-calc(55);
+            height: rem-calc(45);
+            margin-right: rem-calc(3);
+
+            .dropdown-toggle {
+                cursor: pointer;
+                display: block;
+                @include absolute-center;
+                border: none !important;
+
+                svg {
+                    width: rem-calc(25);
+                    height: rem-calc(25);
+                }
+
+                @include svg-fill($primary);
+
+                &:after {
+                    vertical-align: unset;
+                    border-top-color: $primary;
+                    border-bottom-color: $primary;
+                }
+            }
+
+            .dropdown-menu {
+                padding: rem-calc(8);
+            }
+        }
+
+        &--icon-button {
+            position: relative;
+            display: block;
+            width: rem-calc(45);
+            height: rem-calc(45);
+            border: none !important;
+
+            svg {
+                width: rem-calc(30);
+                height: rem-calc(30);
+                @include absolute-center;
+            }
+
+            @include svg-fill($primary);
+
+            .cart-count {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(50%, -100%);
+                display: none;
+                width: rem-calc(20);
+                height: rem-calc(20);
+                border-radius: 50%;
+                font-size: 70%;
+                line-height: rem-calc(20);
+                background-color: $secondary;
+                color: $white;
+                text-align: center;
+            }
+
+            &.has-products {
+                .cart-count {
+                    display: block;
+                }
+            }
+
+            &.toggle-navigation {
+                @include media-breakpoint-up(lg) {
+                    visibility: hidden;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &--logo {
+            border: none !important;
+        }
+    }
+
+}

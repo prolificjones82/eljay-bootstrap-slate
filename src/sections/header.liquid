@@ -1,15 +1,214 @@
 {%- comment -%}
-  This is a required section for the Shopify Theme Store.
-  It is available in the "Header" section in the theme editor.
+    This is a required section for the Shopify Theme Store.
+    It is available in the "Header" section in the theme editor.
 
-  Theme Store required settings
-  - Show announcement
-  - Text: message to announce
-  - Link: link of the announcement bar
+    Theme Store required settings
+    - Show announcement
+    - Text: message to announce
+    - Link: link of the announcement bar
 
-  Theme Store optional settings
-  - Home page only: only shows on the home page
+    Theme Store optional settings
+    - Home page only: only shows on the home page
 {%- endcomment -%}
+
+<section class="section__header" data-section-id="{{ section.id }}" data-section-type="header">
+    {% if section.settings.announcement_bar_enabled %}
+        {% if section.settings.announcement_bar_home_page_only == false or template.name == 'index' %}
+            <div class="announcement-bar" role="alert">
+                {% if section.settings.announcement_bar_link != blank %}
+                    <a href="{{ section.settings.announcement_bar_link }}">
+                        {{ section.settings.announcement_bar_text | escape }}
+                    </a>
+                {% else %}
+                    <p>{{ section.settings.announcement_bar_text | escape }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <header class="section__header--header" role="banner">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="section__header--button-container">
+                    <a href="#" class="section__header--icon-button toggle-navigation order-lg-2">
+                        {% include 'icon-hamburger' %}
+                    </a>
+
+                    <a href="#" class="section__header--icon-button toggle-search order-lg-1">
+                        {% include 'icon-search' %}
+                    </a>
+                </div>
+
+                {% if template.name == 'index' %}<h1 class="h5 m-0">{% else %}<div class="h5 m-0">{% endif %}
+                    <a href="/" class="section__header--logo">
+                        {% if settings.shop_logo != blank %}
+                            {% capture image_size %}{{ settings.shop_logo.logo_max_width }}x{% endcapture %}
+                            <img src="{{ settings.shop_logo | img_url: image_size }}" srcset="{{ settings.shop_logo | img_url: image_size }} 1x, {{ settings.shop_logo | img_url: image_size, scale: 2 }} 2x" alt="{{ settings.shop_logo.alt | default: shop.name }}">
+                        {% else %}
+                            {{ shop.name }}
+                        {% endif %}
+                    </a>
+                {% if template.name == 'index' %}</h1>{% else %}</div>{% endif %}
+
+                <div class="section__header--button-container">
+                    {% if shop.customer_accounts_enabled %}
+                        {% if customer %}
+                            <a href="/account" class="section__header--icon-button">
+                                {% capture name %}{{ customer.first_name | truncate: 1 }} {{ customer.last_name | truncate: 1 }}{% endcapture %}
+                                <span class="account-icon">{{ name }}</span>
+                            </a>
+                        {% else %}
+                            <a href="/account" class="section__header--icon-button">
+                                {% include 'icon-account' %}
+                            </a>
+                        {% endif %}
+                    {% endif %}
+
+                    <a href="/cart" class="section__header--icon-button">
+                        {% include 'icon-cart' %}
+                        <span class="sr-only">{{ 'layout.cart.title' | t }}</span>
+                        <span id="cart-count" class="cart-count">{{ cart.item_count }} <span class="sr-only">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="section__header--navigation" role="navigation">
+        <a href="#" class="section__header--icon-button toggle-navigation d-lg-none">
+            {% include 'icon-close' %}
+        </a>
+
+        <ul>
+            {% for link in linklists[section.settings.menu].links %}
+                {% if link.links != blank %}
+                    <li class="section__header--navigation-dropdown">
+                        <a href="{{ link.url }}" class="section__header--navigation-dropdown-menu-toggle" id="{{ link.title | handleize }}Menu" data-toggle="section__header--navigation-dropdown-menu-list" aria-haspopup="true" aria-expanded="false">
+                            {{ link.title }}
+                        </a>
+                        <div class="section__header--navigation-dropdown-menu-list" aria-labelledby="{{ link.title | handleize }}Menu">
+                            {% for childlink in link.links %}
+                                <a href="{{ childlink.url }}" class="section__header--navigation-dropdown-menu-list-item">
+                                    {{ childlink.title }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ link.url }}">
+                            {{ link.title }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <form class="hero-search" action="/search" method="get" role="search">
+        <label for="Search-{{ section.id }}" class="label-hidden">
+            {{ 'general.search.placeholder' | t }}
+        </label>
+    
+        <input type="search" name="q" id="Search-{{ section.id }}" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+    
+        <button type="submit" class="button">
+            {% include 'icon-search' %}
+            <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+    </form>
+</section>
+
+
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Announcement bar"
+            },
+            {
+                "type": "checkbox",
+                "id": "announcement_bar_enabled",
+                "label": "Show announcement",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "announcement_bar_home_page_only",
+                "label": "Show on home page only",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "announcement_bar_text",
+                "label": "Announcement text",
+                "default": "Announce something here"
+            },
+            {
+                "type": "url",
+                "id": "announcement_bar_link",
+                "label": "Announcement link",
+                "info": "Optional"
+            },
+            {
+                "type": "header",
+                "content": "Menu"
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu",
+                "default": "main-menu"
+            }
+        ]
+    }
+{% endschema %}
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "{{ shop.name }}",
+        {% if settings.shop_logo %}
+            {% assign image_size = settings.shop_logo.width | append:'x' %}
+            "logo": "https:{{ settings.shop_logo | img_url: image_size }}",
+        {% endif %}
+        "sameAs": [
+            "{{ settings.social_twitter_link }}",
+            "{{ settings.social_facebook_link }}",
+            "{{ settings.social_pinterest_link }}",
+            "{{ settings.social_instagram_link }}",
+            "{{ settings.social_tumblr_link }}",
+            "{{ settings.social_snapchat_link }}",
+            "{{ settings.social_youtube_link }}",
+            "{{ settings.social_vimeo_link }}"
+        ],
+        "url": "{{ shop.url }}{{ page.url }}"
+    }
+</script>
+
+{% if template.name == 'index' %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "{{ shop.name }}",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{{ shop.url }}/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            },
+            "url": "{{ shop.url }}{{ page.url }}"
+        }
+    </script>
+{% endif %}
+
+
+
+{% comment %}
 <section data-section-id="{{ section.id }}" data-section-type="header">
   {%- if section.settings.announcement_bar_enabled -%}
     <div>
@@ -136,102 +335,4 @@
   </style>
 {% endif %}
 
-{% schema %}
-  {
-    "name": "Header",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Announcement bar"
-      },
-      {
-        "type": "checkbox",
-        "id": "announcement_bar_enabled",
-        "label": "Show announcement",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "announcement_bar_home_page_only",
-        "label": "Show on home page only",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "announcement_bar_text",
-        "label": "Announcement text",
-        "default": "Announce something here"
-      },
-      {
-        "type": "url",
-        "id": "announcement_bar_link",
-        "label": "Announcement link",
-        "info": "Optional"
-      },
-      {
-        "type": "header",
-        "content": "Header"
-      },
-      {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo image"
-      },
-      {
-        "type": "range",
-        "id": "logo_max_width",
-        "min": 50,
-        "max": 450,
-        "step": 10,
-        "unit": "px",
-        "label": "Custom logo width",
-        "default": 250
-      },
-      {
-        "type": "link_list",
-        "id": "menu",
-        "label": "Menu",
-        "default": "main-menu"
-      }
-    ]
-  }
-{% endschema %}
-
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": "{{ shop.name }}",
-  {% if section.settings.logo %}
-    {% assign image_size = section.settings.logo.width | append:'x' %}
-    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
-  {% endif %}
-  "sameAs": [
-    "{{ settings.social_twitter_link }}",
-    "{{ settings.social_facebook_link }}",
-    "{{ settings.social_pinterest_link }}",
-    "{{ settings.social_instagram_link }}",
-    "{{ settings.social_tumblr_link }}",
-    "{{ settings.social_snapchat_link }}",
-    "{{ settings.social_youtube_link }}",
-    "{{ settings.social_vimeo_link }}"
-  ],
-  "url": "{{ shop.url }}{{ page.url }}"
-}
-</script>
-
-{% if template.name == 'index' %}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      "name": "{{ shop.name }}",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "{{ shop.url }}/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
-      "url": "{{ shop.url }}{{ page.url }}"
-    }
-  </script>
-{% endif %}
+{% endcomment %}

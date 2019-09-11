@@ -1,0 +1,12 @@
+.announcement-bar {
+    @extend .alert;
+    text-align: center;
+    margin: 0;
+    background-color: $announcement-bar-bg;
+    color: $announcement-bar-color;
+    border-radius: $announcement-bar-border-radius;
+
+    p {
+        margin: $announcement-bar-paragraph-margin;
+    }
+}

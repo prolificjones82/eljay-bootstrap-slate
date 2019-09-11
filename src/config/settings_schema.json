@@ -1,57 +1,90 @@
 [
-  {
-    "name": "theme_info",
-    "theme_name": "LGT Starter",
-    "theme_version": "1.0.0",
-    "theme_author": "Lee Jones",
-    "theme_documentation_url": "https://github.com/prolificjones82/shopify-slate-starter",
-    "theme_support_url": "https://github.com/prolificjones82/shopify-slate-starter/issues"
-  },
-  {
-    "name": "Social media",
-    "settings": [
-      {
-        "type": "text",
-        "id": "social_twitter_link",
-        "label": "Twitter link"
-      },
-      {
-        "type": "text",
-        "id": "social_facebook_link",
-        "label": "Facebook link"
-      },
-      {
-        "type": "text",
-        "id": "social_pinterest_link",
-        "label": "Pinterest link"
-      },
-      {
-        "type": "text",
-        "id": "social_instagram_link",
-        "label": "Instagram link"
-      }
-    ]
-  },
-  {
-    "name": "Cart",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "cart_notes_enable",
-        "label": "Enable cart notes",
-        "default": true
-      }
-    ]
-  },
-  {
-    "name": "Favicon",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "Favicon image",
-        "info": "Will be scaled down to 32 x 32px"
-      }
-    ]
-  }
+    {
+        "name": "theme_info",
+        "theme_name": "Eljay Bootstrap Starter",
+        "theme_version": "0.0.1",
+        "theme_author": "Lee Jones",
+        "theme_documentation_url": "https://github.com/prolificjones82/eljay-bootstrap-slate",
+        "theme_support_url": "https://github.com/prolificjones82/eljay-bootstrap-slate/issues"
+    },
+    {
+        "name": "Shop Logo",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "shop_logo",
+                "label": "Shop Logo Image"
+            }
+        ]
+    },
+    {
+        "name": "Social media",
+        "settings": [
+            {
+                "type": "text",
+                "id": "social_twitter_link",
+                "label": "Twitter link"
+            },
+            {
+                "type": "text",
+                "id": "social_facebook_link",
+                "label": "Facebook link"
+            },
+            {
+                "type": "text",
+                "id": "social_pinterest_link",
+                "label": "Pinterest link"
+            },
+            {
+                "type": "text",
+                "id": "social_instagram_link",
+                "label": "Instagram link"
+            }
+        ]
+    },
+    {
+        "name": "Social sharing",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "social_twitter_share",
+            "label": "Share via Twitter",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "social_facebook_share",
+            "label": "Share via Facebook",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "social_pinterest_share",
+            "label": "Share via Pinterest",
+            "default": false
+          }
+        ]
+    },
+    {
+        "name": "Cart",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "cart_notes_enable",
+                "label": "Enable cart notes",
+                "default": true
+            }
+        ]
+    },
+    {
+        "name": "Favicon",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "favicon",
+                "label": "Favicon image",
+                "info": "Will be scaled down to 32 x 32px"
+            }
+        ]
+    }
 ]

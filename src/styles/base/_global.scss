@@ -1,0 +1,78 @@
+@for $i from 3000 through 3010 {
+    iframe[src="//localhost:#{$i}/preview_bar"] { display:none; }
+}
+
+html,
+body {
+    -webkit-font-smoothing: antialiased !important;
+}
+
+a {
+    border-bottom: solid 1px rgba($link-color, 0);
+    @include transition(color 100ms ease-in-out, border-color 100ms ease-in-out);
+
+    &:hover {
+        border-bottom: solid 1px rgba($link-hover-color, 1);
+    }
+}
+
+*,
+* > * {
+    outline: none !important;
+}
+
+.visually-hidden {
+    display: none;
+}
+
+#Login {
+    display: none;
+
+    .password-open & {
+        display: block;
+    }
+}
+
+.alert {
+    ul {
+        @extend .list-unstyled;
+        padding: 0;
+    }
+}
+
+.rte {
+    img {
+        @extend .img-fluid;
+    }
+}
+
+.slick-dots {
+    @extend .list-unstyled;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        margin: rem-calc(0 3);
+
+        button {
+            display: block;
+            background-color: $light;
+            width: rem-calc(8);
+            height: rem-calc(8);
+            border: none;
+            border-radius: 50%;
+            text-indent: -9999px;
+            padding: 0;
+            @include transition(all 800ms ease-in-out);
+        }
+
+        &.slick-active {
+            button {
+                background-color: $primary;
+                width: rem-calc(30);
+                border-radius: 8px;
+            }
+        }
+    }
+}
