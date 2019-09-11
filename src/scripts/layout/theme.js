@@ -77,11 +77,6 @@ $(function() {
         );
     }
 
-    $('.toggle-password').on('click tap', (evt) => {
-        evt.preventDefault();
-        $('body').toggleClass('password-open');
-    });
-
     $('.toggle-search').on('click tap', (evt) => {
         evt.preventDefault();
         $('body').toggleClass('search-open');
