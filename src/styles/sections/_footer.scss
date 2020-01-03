@@ -1,0 +1,12 @@
+footer {
+    background-color: $gray-500;
+    padding-top: rem-calc(30);
+
+    .copyright {
+        @extend .list-unstyled;
+
+        li {
+            @extend small;
+        }
+    }
+}

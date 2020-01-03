@@ -1,4 +1,40 @@
 <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="copyright">
+                    <li>&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+{% schema %}
+    {
+        "name": "Footer",
+        "settings": [
+            {
+                "type": "link_list",
+                "id": "footer_linklist",
+                "label": "First menu",
+                "default": "footer"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_payment_icons",
+                "label": "Show payment icons",
+                "default": false
+            }
+        ]
+    }
+{% endschema %}
+
+
+{% comment %}
+<footer>
 
   {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
   <ul>
@@ -45,24 +81,4 @@
     <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
   </div>
 </footer>
-
-{% schema %}
-  {
-    "name": "Footer",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "footer_linklist",
-        "label": "First menu",
-        "default": "footer"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_payment_icons",
-        "label": "Show payment icons",
-        "default": false
-      }
-    ]
-  }
-
-{% endschema %}
+{% endcomment %}
