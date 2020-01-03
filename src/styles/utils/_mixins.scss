@@ -79,6 +79,8 @@
 
 @mixin svg-fill($color, $args: fill $link-transition-speed ease-in-out) {
     svg {
+        @content;
+
         circle,
         path {
             fill: $color;
@@ -117,4 +119,72 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@mixin img_squared($position: relative, $hover: false, $overlay: false, $percentage: 100%, $img_fit: cover) {
+    position: $position;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        display: block;
+        padding-top: $percentage;
+
+    }
+    @if $overlay == true {
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba($black, 0.2);
+        }
+    }
+
+    img {
+        position: absolute;
+        @if $overlay == true {
+            z-index: 0;
+        }
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: $img_fit;
+        object-position: center;
+        transform: scale(1);
+        transition: transform 600ms ease-in-out;
+    }
+
+    @if $hover == true {
+        &:hover {
+            img {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+@mixin fill_image($position: relative, $overlay: true) {
+    position: $position;
+
+    img {
+        position: absolute;
+        @if $overlay == true {
+            z-index: 0;
+        }
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }

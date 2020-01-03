@@ -84,6 +84,7 @@
                 @include media-breakpoint-up(lg) {
                     visibility: hidden;
                     pointer-events: none;
+                    display: none;
                 }
             }
         }

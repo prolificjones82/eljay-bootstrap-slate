@@ -46,7 +46,8 @@ theme.breakpoints = {
     'sm':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-sm'), 10),
     'md':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-md'), 10),
     'lg':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-lg'), 10),
-    'xl':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-xl'), 10)
+    'xl':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-xl'), 10),
+    'xxl':     parseInt(getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-xxl'), 10)
 }
 
 $(window).on('load', () => {
@@ -80,6 +81,7 @@ $(function() {
     $('.toggle-search').on('click tap', (evt) => {
         evt.preventDefault();
         $('body').toggleClass('search-open');
+        $('.hero-search').find('input[type="text"]').focus();
     });
 
     $('.toggle-navigation').on('click tap', (evt) => {

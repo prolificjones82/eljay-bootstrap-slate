@@ -46,6 +46,10 @@ a {
     }
 }
 
+.icon-fallback-text {
+    @extend .sr-only;
+}
+
 .slick-dots {
     @extend .list-unstyled;
     text-align: center;

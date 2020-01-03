@@ -21,4 +21,55 @@
         transform-origin: 1800px 50%;
         opacity: 1;
     }
+
+    .toggle-search {
+        position: absolute;
+        @include svg-fill($white);
+        top: rem-calc(10);
+        right: rem-calc(10);
+        z-index: 1;
+    }
+
+    &__container {
+        position: relative;
+        @extend .container;
+
+        label {
+            display: none;
+        }
+
+        .form-control {
+            background-color: transparent;
+            color: $white;
+            border: none;
+            border-bottom: solid 1px $white;
+            border-radius: 0;
+            box-shadow: none;
+            font-size: rem-calc(30);
+            padding-left: 0;
+            padding-right: 0;
+
+            @include input-placeholder {
+                color: $white;
+            }
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            z-index: 1;
+            width: rem-calc(50);
+            height: rem-calc(50);
+            border: none;
+            transform: translate(-25%, -50%);
+            background-color: transparent;
+
+            @include svg-fill($white) {
+                width: rem-calc(25);
+                height: rem-calc(25);
+            }
+        }
+    }
+
 }
