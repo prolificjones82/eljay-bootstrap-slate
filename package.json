@@ -35,7 +35,7 @@
     "@shopify/theme-variants": "^1.0.0-alpha.9",
     "bootstrap": "~4.3.1",
     "es6-promise": "^4.2.5",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "lazysizes": "^4.1.1",
     "lodash-es": "^4.17.4",
