@@ -38,7 +38,7 @@
     "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "lazysizes": "^5.2.1",
-    "lodash-es": "^4.17.4",
+    "lodash-es": "^4.17.21",
     "mobile-device-detect": "^0.2.3",
     "normalize.css": "^7.0.0",
     "popper.js": "^1.14.6",
